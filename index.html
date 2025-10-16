@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="في القرآن - رحلة تطهير النفس وتنمية القلب بالإيمان والعمل الصالح">
+  <title>الرئيسية - في القرآن</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: "Cairo", sans-serif;
+      background: linear-gradient(135deg, #0a2e36 0%, #1a4d5c 25%, #00796b 50%, #1a4d5c 75%, #0a2e36 100%);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+      color: #1a1a1a;
+      line-height: 1.8;
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(0, 150, 136, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, rgba(255, 255, 255, 0.03) 0%, transparent 45%);
+      pointer-events: none;
+      z-index: 0;
+      animation: pulse 8s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.8; }
+    }
+
+    /* Floating particles */
+    .particle {
+      position: fixed;
+      width: 3px;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 1;
+      animation: floatParticle 20s infinite linear;
+    }
+
+    @keyframes floatParticle {
+      0% {
+        transform: translateY(100vh) translateX(0) scale(0);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) translateX(100px) scale(1);
+        opacity: 0;
+      }
+    }
+
+    header {
+      background: linear-gradient(135deg, rgba(0, 77, 64, 0.95) 0%, rgba(0, 105, 92, 0.9) 50%, rgba(0, 121, 107, 0.95) 100%);
+      backdrop-filter: blur(20px);
+      color: white;
+      text-align: center;
+      padding: 70px 20px 60px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+      position: relative;
+      overflow: hidden;
+      z-index: 10;
+      border-bottom: 3px solid rgba(255, 255, 255, 0.1);
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: -60%;
+      right: -15%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: float 20s ease-in-out infinite;
+    }
+
+    header::after {
+      content: '';
+      position: absolute;
+      bottom: -40%;
+      left: -10%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: float 25s ease-in-out infinite reverse;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+      33% { transform: translate(30px, -30px) scale(1.1) rotate(120deg); }
+      66% { transform: translate(-30px, 30px) scale(0.9) rotate(240deg); }
+    }
+
+    #dhikrText {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 1);
+      text-shadow: 0 3px 15px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 255, 255, 0.3);
+      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      text-align: center;
+      margin-bottom: 30px;
+      font-family: "Amiri", serif;
+      position: relative;
+      z-index: 2;
+      letter-spacing: 2px;
+      padding: 20px 40px;
+      border-radius: 50px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      display: inline-block;
+    }
+
+    #dhikrText::before {
+      content: '✨';
+      position: absolute;
+      right: -20px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.5rem;
+      animation: sparkle 2s ease-in-out infinite;
+    }
+
+    #dhikrText::after {
+      content: '✨';
+      position: absolute;
+      left: -20px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.5rem;
+      animation: sparkle 2s ease-in-out infinite 0.5s;
+    }
+
+    @keyframes sparkle {
+      0%, 100% { opacity: 1; transform: translateY(-50%) scale(1); }
+      50% { opacity: 0.5; transform: translateY(-50%) scale(1.3); }
+    }
+
+    header h1 {
+      font-size: 3.8rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      text-shadow: 0 5px 20px rgba(0, 0, 0, 0.4), 0 0 40px rgba(255, 255, 255, 0.2);
+      position: relative;
+      z-index: 2;
+      animation: fadeInDown 1.2s ease-out;
+      background: linear-gradient(135deg, #ffffff 0%, #b2dfdb 50%, #ffffff 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 3s linear infinite, fadeInDown 1.2s ease-out;
+    }
+
+    @keyframes shimmer {
+      to { background-position: 200% center; }
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    header p {
+      font-size: 1.5rem;
+      font-weight: 500;
+      opacity: 0.95;
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      margin: 0 auto;
+      animation: fadeIn 1.8s ease-out;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    nav {
+      background: linear-gradient(to bottom, rgba(0, 77, 64, 0.98) 0%, rgba(0, 67, 58, 0.98) 100%);
+      backdrop-filter: blur(15px);
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding: 20px 15px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+      border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 14px 28px;
+      border-radius: 35px;
+      font-weight: 600;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      background: linear-gradient(135deg, rgba(0, 105, 92, 0.9) 0%, rgba(0, 121, 107, 0.9) 100%);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      font-size: 1rem;
+      position: relative;
+      overflow: hidden;
+      border: 2px solid rgba(255, 255, 255, 0.1);
+    }
+
+    nav a::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.25);
+      transform: translate(-50%, -50%);
+      transition: width 0.7s, height 0.7s;
+    }
+
+    nav a:hover::before {
+      width: 350px;
+      height: 350px;
+    }
+
+    nav a:hover, nav a.active {
+      background: linear-gradient(135deg, rgba(0, 150, 136, 0.95) 0%, rgba(0, 137, 123, 0.95) 100%);
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 8px 25px rgba(0, 150, 136, 0.5);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    nav a.active {
+      box-shadow: 0 8px 25px rgba(0, 150, 136, 0.6);
+      background: linear-gradient(135deg, rgba(0, 150, 136, 1) 0%, rgba(0, 137, 123, 1) 100%);
+    }
+
+    main {
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-section {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(250, 250, 250, 0.95) 100%);
+      backdrop-filter: blur(20px);
+      padding: 70px 50px;
+      border-radius: 30px;
+      box-shadow: 0 15px 60px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      margin-bottom: 60px;
+      border-right: 10px solid #00796b;
+      border-bottom: 10px solid #00897b;
+      position: relative;
+      overflow: hidden;
+      animation: slideUp 1s ease-out;
+      border: 3px solid rgba(0, 121, 107, 0.2);
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: -150px;
+      right: -150px;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(0, 121, 107, 0.08) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: rotate 30s linear infinite;
+    }
+
+    .hero-section::after {
+      content: '';
+      position: absolute;
+      bottom: -100px;
+      left: -100px;
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(circle, rgba(0, 150, 136, 0.06) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: rotate 25s linear infinite reverse;
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    #typingContainer {
+      font-size: 3.2rem;
+      font-weight: 700;
+      color: #00796b;
+      text-align: center;
+      font-family: "Cairo", sans-serif;
+      margin-bottom: 35px;
+      min-height: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      position: relative;
+      z-index: 1;
+    }
+
+    #typingText {
+      border-left: 5px solid #00796b;
+      padding-right: 15px;
+      animation: blink 0.9s infinite;
+      display: inline-block;
+      min-width: 250px;
+      text-align: right;
+      text-shadow: 2px 2px 8px rgba(0, 121, 107, 0.2);
+    }
+
+    @keyframes blink {
+      0%, 49% { border-color: #00796b; }
+      50%, 100% { border-color: transparent; }
+    }
+
+    .hero-section > p {
+      font-size: 1.35rem;
+      line-height: 2.2;
+      color: #424242;
+      margin: 30px auto;
+      max-width: 850px;
+      position: relative;
+      z-index: 1;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    .ayah-box {
+      background: linear-gradient(135deg, rgba(224, 242, 241, 0.98) 0%, rgba(178, 223, 219, 0.95) 100%);
+      backdrop-filter: blur(15px);
+      padding: 50px 40px;
+      border-radius: 25px;
+      border-right: 8px solid #00796b;
+      border-bottom: 8px solid #00897b;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #004d40;
+      margin: 50px auto;
+      box-shadow: 0 10px 40px rgba(0, 121, 107, 0.4);
+      font-family: "Amiri", serif;
+      line-height: 2.5;
+      max-width: 900px;
+      position: relative;
+      z-index: 1;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 3px solid rgba(0, 121, 107, 0.3);
+    }
+
+    .ayah-box:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 15px 50px rgba(0, 121, 107, 0.5);
+      border-right-width: 12px;
+      border-bottom-width: 12px;
+    }
+
+    .ayah-box::before {
+      content: '﴿';
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 3rem;
+      color: rgba(0, 77, 64, 0.2);
+      font-family: "Amiri", serif;
+    }
+
+    .ayah-box::after {
+      content: '﴾';
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      font-size: 3rem;
+      color: rgba(0, 77, 64, 0.2);
+      font-family: "Amiri", serif;
+    }
+
+    .ayah-box span {
+      font-size: 1.25rem;
+      opacity: 0.9;
+      font-family: "Cairo", sans-serif;
+      display: block;
+      margin-top: 25px;
+      font-weight: 600;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      background: linear-gradient(135deg, rgba(0, 77, 64, 0.98) 0%, rgba(0, 37, 26, 0.98) 100%);
+      backdrop-filter: blur(15px);
+      color: white;
+      margin-top: 70px;
+      box-shadow: 0 -5px 30px rgba(0, 0, 0, 0.3);
+      position: relative;
+      z-index: 1;
+      border-top: 3px solid rgba(255, 255, 255, 0.1);
+    }
+
+    footer p {
+      font-size: 1.15rem;
+      font-weight: 500;
+      letter-spacing: 0.8px;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Scroll indicator */
+    .scroll-indicator {
+      position: fixed;
+      bottom: 30px;
+      right: 50%;
+      transform: translateX(50%);
+      width: 30px;
+      height: 50px;
+      border: 3px solid rgba(255, 255, 255, 0.8);
+      border-radius: 25px;
+      display: flex;
+      justify-content: center;
+      padding-top: 8px;
+      z-index: 50;
+      animation: fadeInScroll 2s ease-out 1s;
+      backdrop-filter: blur(10px);
+      background: rgba(0, 121, 107, 0.2);
+    }
+
+    @keyframes fadeInScroll {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .scroll-indicator::before {
+      content: '';
+      width: 4px;
+      height: 10px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 2px;
+      animation: scroll 2s ease-in-out infinite;
+    }
+
+    @keyframes scroll {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(20px); opacity: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.5rem;
+      }
+
+      header p {
+        font-size: 1.15rem;
+      }
+
+      #dhikrText {
+        font-size: 1.6rem;
+        padding: 15px 30px;
+      }
+
+      #typingContainer {
+        font-size: 2.2rem;
+        flex-direction: column;
+        gap: 15px;
+        min-height: 120px;
+      }
+
+      #typingText {
+        min-width: 180px;
+      }
+
+      .ayah-box {
+        font-size: 1.5rem;
+        padding: 35px 28px;
+      }
+
+      nav a {
+        padding: 12px 22px;
+        font-size: 0.92rem;
+      }
+
+      .hero-section {
+        padding: 45px 30px;
+      }
+
+      .scroll-indicator {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Floating particles -->
+  <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+  <div class="particle" style="left: 20%; animation-delay: 2s;"></div>
+  <div class="particle" style="left: 30%; animation-delay: 4s;"></div>
+  <div class="particle" style="left: 40%; animation-delay: 1s;"></div>
+  <div class="particle" style="left: 50%; animation-delay: 3s;"></div>
+  <div class="particle" style="left: 60%; animation-delay: 5s;"></div>
+  <div class="particle" style="left: 70%; animation-delay: 2.5s;"></div>
+  <div class="particle" style="left: 80%; animation-delay: 4.5s;"></div>
+  <div class="particle" style="left: 90%; animation-delay: 1.5s;"></div>
+
+  <header>
+    <div id="dhikrText">سبحان الله</div>
+    <h1>🌙 في القرآن</h1>
+    <p>رحلة تدبر وتزكية من آيات كتاب الله</p>
+  </header>
+
+  <nav>
+    <a href="index.html" class="active">🏠 الرئيسية</a>
+    <a href="tazkia.html">✨ التزكية</a>
+    <a href="salah.html">🕌 الصلاة</a>
+    <a href="zaker.html">📿 الذكر</a>
+    <a href="tadabor.html">📚 التدبر</a>
+    <a href="heart.html">❤️ القلب</a>
+    <a href="book.html">📚 المكتبة</a>
+    <a href="Main/Names/names.html">🌟 أسماء الله الحسنى</a>
+    <a href="rizq.html">💰 الرزق</a>
+    <a href="taoba.html">🔄 التوبة</a>
+    <a href="baraka.html">🌟 البركة</a>
+    <a href="parents.html">👪 الوالدين</a>
+    <a href="rahma.html">🤲 الرحمة</a>
+    <a href="hozn.html">😔 الحزن</a>
+    <a href="shitan.html">😈 الشيطان</a>
+    <a href="believe.html">🕌 الإيمان</a>
+    <a href="contact.html">📞 تواصل معنا</a>
+  </nav>
+
+  <main>
+    <section class="hero-section">
+      <div id="typingContainer">
+        <span id="typingText"></span>
+        <span>في القرآن</span>
+      </div>
+
+      <p>
+        استكشف روائع القرآن الكريم، وتأمل في معاني الرحمة، الصبر، الرزق، البركة، 
+        والبلاء كما وردت في كتاب الله العظيم. رحلة إيمانية عميقة تنير القلب وتزكي النفس.
+      </p>
+      
+      <div class="ayah-box">
+        ﴿قَدْ أَفْلَحَ مَن زَكَّاهَا • وَقَدْ خَابَ مَن دَسَّاهَا﴾
+        <span>[سورة الشمس: 9-10]</span>
+      </div>
+    </section>
+  </main>
+
+  <div class="scroll-indicator"></div>
+
+  <footer>
+    <p>© 2025 في القرآن – رحلة التدبر والإيمان</p>
+    <p style="margin-top: 10px; font-size: 0.95rem; opacity: 0.9;">﴿وَنُنَزِّلُ مِنَ الْقُرْآنِ مَا هُوَ شِفَاءٌ وَرَحْمَةٌ لِّلْمُؤْمِنِينَ﴾</p>
+  </footer>
+
+  <script>
+    // أذكار متغيرة في الأعلى
+    const adhkar = ["سبحان الله", "الحمد لله", "لا إله إلا الله", "الله أكبر", "أستغفر الله", "لا حول ولا قوة إلا بالله"];
+    let dhikrIndex = 0;
+    const dhikrText = document.getElementById("dhikrText");
+    
+    function changeDhikr() {
+      dhikrText.style.opacity = '0';
+      dhikrText.style.transform = 'translateY(-15px) scale(0.95)';
+     
+      setTimeout(() => {
+        dhikrIndex = (dhikrIndex + 1) % adhkar.length;
+        dhikrText.textContent = adhkar[dhikrIndex];
+        dhikrText.style.opacity = '1';
+        dhikrText.style.transform = 'translateY(0) scale(1)';
+      }, 600);
+    }
+    
+    setInterval(changeDhikr, 3500);
+
+    // نصوص التأمل المتغيرة بتأثير الكتابة
+    const verses = [
+      "الرزق", "الصبر", "الرحمة", "البركة", "البلاء", "التوبة",
+      "الشكر", "القلب", "الإيمان", "العمل الصالح", "التقوى",
+      "الهدى", "السكينة", "النجاة", "الحزن", "الفرج", "الصلاح",
+      "النجاح", "الذكر", "العلم", "العمل", "النية", "الصدق",
+      "الوفاء", "العدل", "الإحسان", "الغفران", "الرضا",
+      "أسماء الله الحسنى", "الصحبة", "الدعاء", "الصدقة", "الشيطان"
+    ];
+    
+    let textIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    const typingText = document.getElementById("typingText");
+    
+    function typeEffect() {
+      const current = verses[textIndex];
+     
+      if (!isDeleting) {
+        typingText.textContent = current.slice(0, charIndex + 1);
+        charIndex++;
+       
+        if (charIndex === current.length) {
+          isDeleting = true;
+          setTimeout(typeEffect, 2500);
+          return;
+        }
+        setTimeout(typeEffect, 120);
+      } else {
+        typingText.textContent = current.slice(0, charIndex - 1);
+        charIndex--;
+       
+        if (charIndex === 0) {
+          isDeleting = false;
+          textIndex = (textIndex + 1) % verses.length;
+          setTimeout(typeEffect, 300);
+          return;
+        }
+        setTimeout(typeEffect, 80);
+      }
+    }
+
+    // Initialize typing effect
+    function initTypingEffect() {
+      if (typingText) {
+        setTimeout(typeEffect, 700);
+      }
+    }
+
+    // Smooth scroll for anchor links
+    function initSmoothScroll() {
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      });
+    }
+
+    // Hide scroll indicator on scroll
+    let scrollIndicator = document.querySelector('.scroll-indicator');
+    if (scrollIndicator) {
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 100) {
+          scrollIndicator.style.opacity = '0';
+          scrollIndicator.style.pointerEvents = 'none';
+        } else {
+          scrollIndicator.style.opacity = '1';
+          scrollIndicator.style.pointerEvents = 'auto';
+        }
+      });
+    }
+
+    // Initialize all effects when DOM is ready
+    document.addEventListener("DOMContentLoaded", () => {
+      initTypingEffect();
+      initSmoothScroll();
+    });
+  </script>
+
+</body>
+</html>

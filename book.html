@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="مكتبة التزكية - أهم الكتب في تزكية النفس والسلوك الإيماني">
+  <title>مكتبة التزكية - موقع التزكية</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: "Cairo", sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e8f5e9 100%);
+      color: #1a1a1a;
+      line-height: 1.8;
+      scroll-behavior: smooth;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, #00796b 0%, #004d40 100%);
+      color: white;
+      text-align: center;
+      padding: 50px 20px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.05" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,138.7C960,139,1056,117,1152,112C1248,107,1344,117,1392,122.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+      background-size: cover;
+    }
+    
+    header h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      position: relative;
+      z-index: 1;
+    }
+    
+    header p {
+      font-size: 1.3rem;
+      font-weight: 400;
+      opacity: 0.95;
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* Navbar */
+    nav {
+      background-color: #004d40;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 15px 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 12px 24px;
+      border-radius: 25px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      background: linear-gradient(135deg, #00695c 0%, #00796b 100%);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      font-size: 0.95rem;
+    }
+
+    nav a:hover, nav a.active {
+      background: linear-gradient(135deg, #009688 0%, #00897b 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    }
+
+    /* Main */
+    main {
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .intro-section {
+      background: white;
+      padding: 35px 30px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      margin-bottom: 30px;
+      border-right: 4px solid #00796b;
+      text-align: center;
+    }
+
+    .intro-section h2 {
+      color: #00796b;
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+
+    .intro-section p {
+      font-size: 1.15rem;
+      line-height: 2;
+      color: #424242;
+    }
+
+    .book-card {
+      background: white;
+      padding: 35px 30px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      margin-bottom: 35px;
+      border-right: 5px solid #00796b;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .book-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .book-number {
+      display: inline-block;
+      background: linear-gradient(135deg, #00796b 0%, #004d40 100%);
+      color: white;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 45px;
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-left: 15px;
+      box-shadow: 0 3px 10px rgba(0, 121, 107, 0.3);
+    }
+
+    .book-title {
+      color: #00796b;
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+    }
+
+    .book-info {
+      background: #f1f8f6;
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      border-right: 3px solid #26a69a;
+    }
+
+    .book-info-item {
+      margin-bottom: 12px;
+      font-size: 1.05rem;
+      color: #424242;
+      line-height: 1.9;
+    }
+
+    .book-info-item strong {
+      color: #00695c;
+      font-weight: 700;
+    }
+
+    .book-features {
+      background: #fff8e1;
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      border-right: 3px solid #ffa726;
+    }
+
+    .book-features h4 {
+      color: #f57c00;
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+
+    .book-features ul {
+      padding-right: 20px;
+      margin: 0;
+    }
+
+    .book-features li {
+      margin-bottom: 10px;
+      color: #e65100;
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
+
+    .quote-box {
+      background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
+      padding: 25px 30px;
+      border-radius: 12px;
+      border-right: 5px solid #7b1fa2;
+      margin-top: 20px;
+      position: relative;
+    }
+
+    .quote-box::before {
+      content: '"';
+      font-size: 4rem;
+      color: #7b1fa2;
+      opacity: 0.2;
+      position: absolute;
+      top: 5px;
+      right: 20px;
+      font-family: serif;
+      font-weight: bold;
+    }
+
+    .quote-box p {
+      color: #4a148c;
+      font-size: 1.15rem;
+      font-weight: 600;
+      line-height: 2;
+      margin: 0;
+      padding-right: 45px;
+      font-style: italic;
+    }
+
+    .book-icon {
+      font-size: 2.5rem;
+      margin-left: 10px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 15px;
+      background: linear-gradient(135deg, #004d40 0%, #00251a 100%);
+      color: white;
+      margin-top: 50px;
+    }
+    
+    footer p {
+      color: white;
+      margin: 5px 0;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      
+      header p {
+        font-size: 1rem;
+      }
+      
+      nav a {
+        font-size: 0.85rem;
+        padding: 10px 16px;
+      }
+      
+      .book-title {
+        font-size: 1.4rem;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .book-number {
+        margin-bottom: 10px;
+        margin-left: 0;
+      }
+
+      .book-card {
+        padding: 25px 20px;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>📚 مكتبة التزكية</h1>
+    <p>أهم الكتب في تزكية النفس والسلوك الإيماني من مؤلفات علماء السلف الصالح</p>
+  </header>
+
+  <!-- Navbar -->
+  <nav>
+    <a href="index.html" class="active">🏠 الرئيسية</a>
+    <a href="tazkia.html">✨ التزكية</a>
+    <a href="salah.html">🕌 الصلاة</a>
+    <a href="zaker.html">📿 الذكر</a>
+    <a href="tadabor.html">📚 التدبر</a>
+    <a href="heart.html">❤️ القلب</a>
+    <a href="book.html">📚 المكتبة</a>
+    <a href="about.html"> أسماء الله الحسنى</a>
+    <a href ="rizq.html">💰 الرزق</a>
+    <a href="taoba.html">التوبة </a>
+    <a href="baraka.html">🌟 البركة</a>
+    <a href="contact.html">📞 تواصل معنا</a>
+  </nav>
+
+  <!-- Main Content -->
+  <main>
+
+    <!-- Introduction -->
+    <section class="intro-section">
+      <h2>📖 مكتبة التزكية الشاملة</h2>
+      <p>
+        نقدم لكم مجموعة مختارة من أمهات الكتب في التزكية والسلوك الإيماني، 
+        كتبها كبار علماء الإسلام من السلف الصالح. هذه الكتب هي المرجع الأساسي 
+        لكل من يريد تزكية نفسه وتطهير قلبه على منهج القرآن والسنة.
+      </p>
+    </section>
+
+    <!-- Book 1 -->
+    <article class="book-card">
+      <h3 class="book-title">
+        <span class="book-number">1</span>
+        <span class="book-icon">📕</span>
+        تزكية النفس
+      </h3>
+      
+      <div class="book-info">
+        <div class="book-info-item">
+          <strong>المؤلف:</strong> أحمد بن عبد الحليم بن تيمية (شيخ الإسلام ابن تيمية)
+        </div>
+        <div class="book-info-item">
+          <strong>الموضوع:</strong> رسالة مختصرة تهدف إلى بيان كيف يزكو الإنسان نفسه، بمعنى كيف يطهّرها من الذنوب ويملأها بالأعمال الصالحة، بالاعتماد على القرآن والسنة وأقوال السلف
+        </div>
+        <div class="book-info-item">
+          <strong>الحجم:</strong> حوالي 100 صفحة
+        </div>
+        <div class="book-info-item">
+          <strong>المحقق:</strong> محمد بن سعيد بن سالم القحطاني
+        </div>
+      </div>
+
+      <div class="book-features">
+        <h4>✨ المزايا:</h4>
+        <ul>
+          <li>كتاب موجز وسهل، مناسب للمبتدئين في التزكية</li>
+          <li>يركّز على ترك المحرمات وفعل المأمورات كسبيل للتزكية</li>
+          <li>من المراجع التي يُشير إليها العلماء عند الحديث عن تزكية النفس</li>
+        </ul>
+      </div>
+
+      <div class="quote-box">
+        <p>
+          "تزكية النفس تكون بأمرين: بفعل المأمور وترك المحظور، فمن فعل ما أُمر به وترك ما نُهي عنه فقد زكّى نفسه"
+        </p>
+      </div>
+
+      <div class="quote-box">
+        <p>
+          "العبد لا يستغني عن تزكية نفسه طرفة عين، فإن لم يزكها بالحق زكّتها النفس بالباطل، ولا بد"
+        </p>
+      </div>
+    </article>
+
+    <!-- Book 2 -->
+    <article class="book-card">
+      <h3 class="book-title">
+        <span class="book-number">2</span>
+        <span class="book-icon">📗</span>
+        الجواب الكافي لمن سأل عن الدواء الشافي (الداء والدواء)
+      </h3>
+      
+      <div class="book-info">
+        <div class="book-info-item">
+          <strong>المؤلف:</strong> محمد بن أبي بكر بن أيوب (ابن قيم الجوزية)
+        </div>
+        <div class="book-info-item">
+          <strong>الموضوع:</strong> كتاب شامل في إصلاح النفس، يعرض «الداء» (أي الأمراض القلبية والنفسية) و«الدواء» (سُبل الإصلاح والتزكية)
+        </div>
+        <div class="book-info-item">
+          <strong>الفصول والمواضيع:</strong> يتناول أسباب المعاصي، تأثيرها، وطرق العلاج الروحي، مثل الإخلاص، المراقبة، الرجوع إلى الله، وغيرها
+        </div>
+        <div class="book-info-item">
+          <strong>الانتشار:</strong> من المراجع الكلاسيكية المهمة في علم السلوك والتزكية، ومتوفر بصيغة PDF ومطبوع
+        </div>
+      </div>
+
+      <div class="book-features">
+        <h4>✨ المزايا:</h4>
+        <ul>
+          <li>عمق في المعالجة النفسية والروحية</li>
+          <li>مثالي لمن يريد التوسع في موضوع إصلاح النفس</li>
+          <li>اعتماد كامل على الأدلة الشرعية من القرآن والسنة</li>
+          <li>أسلوب رائع يجمع بين العلم والحكمة</li>
+        </ul>
+      </div>
+
+      <div class="quote-box">
+        <p>
+          "الذنب ينسي القلب ذكر الله، وذكر الله هو حياة القلب وروحه، فإذا فاته الذكر فاتته الحياة"
+        </p>
+      </div>
+
+      <div class="quote-box">
+        <p>
+          "فالمعصية تورث الذل ولا بد، فإن العز كل العز في طاعة الله، والذل كل الذل في معصيته"
+        </p>
+      </div>
+
+      <div class="quote-box">
+        <p>
+          "في القلب شعث لا يلمّه إلا الإقبال على الله، وفيه وحشة لا يزيلها إلا الأنس به في خلوته"
+        </p>
+      </div>
+    </article>
+
+    <!-- Book 3 -->
+    <article class="book-card">
+      <h3 class="book-title">
+        <span class="book-number">3</span>
+        <span class="book-icon">📘</span>
+        مختصر منهاج القاصدين
+      </h3>
+      
+      <div class="book-info">
+        <div class="book-info-item">
+          <strong>المؤلف:</strong> أحمد بن عبد الرحمن بن قدامة المقدسي
+        </div>
+        <div class="book-info-item">
+          <strong>الموضوع:</strong> اختصار لكتاب "منهاج القاصدين" الذي يتناول المنهج في تهذيب النفس والأعمال الخفية والباطنة، وينقل الأصول التي على العبد أن يقصدها في علاقته بالله
+        </div>
+        <div class="book-info-item">
+          <strong>الحجم:</strong> حوالي 488 صفحة
+        </div>
+        <div class="book-info-item">
+          <strong>المحقق:</strong> طارق بن عبد الواحد بن علي
+        </div>
+      </div>
+
+      <div class="book-features">
+        <h4>✨ المزايا:</h4>
+        <ul>
+          <li>يجمع بين البساطة والعمق في المنهج إلى الله</li>
+          <li>فكرة المنهج إلى الله شاملة ومتكاملة</li>
+          <li>مفيد لمن يرغب في تنظيم حياته مع الله: الباطن والظاهر</li>
+          <li>منهج عملي واضح في السلوك الإيماني</li>
+        </ul>
+      </div>
+
+      <div class="quote-box">
+        <p>
+          "اعلم أن سعادة العبد في الدارين إنما هي بإصلاح قلبه، وصلاح القلب بأن يكون ممتلئاً من معرفة الله ومحبته"
+        </p>
+      </div>
+
+      <div class="quote-box">
+        <p>
+          "من أراد السعادة الأبدية فليلزم عتبة العبودية، والعبودية حقيقتها موافقة الأمر والنهي ظاهراً وباطناً"
+        </p>
+      </div>
+    </article>
+
+    <!-- Book 4 -->
+    <article class="book-card">
+      <h3 class="book-title">
+        <span class="book-number">4</span>
+        <span class="book-icon">📙</span>
+        منازل السائرين
+      </h3>
+      
+      <div class="book-info">
+        <div class="book-info-item">
+          <strong>المؤلف:</strong> عبد الله الأنصاري الهروي (أبو إسماعيل الأنصاري) - المتوفى 481 هـ
+        </div>
+        <div class="book-info-item">
+          <strong>الموضوع:</strong> يصف الطريق الروحي للمؤمن عبر «منازل» أو مراحل متسلسلة، كل منزل له شروطه وخصائصه، لتزكية النفس وتقربها إلى الله
+        </div>
+        <div class="book-info-item">
+          <strong>الفهرس:</strong> يحتوي على أبواب مثل اليقظة، التوبة، المحاسبة، الذكر، الزهد، وغيرها
+        </div>
+        <div class="book-info-item">
+          <strong>الشرح:</strong> ابن القيم كتب شرحاً عظيماً لهذا الكتاب باسم "مدارج السالكين" ليُفصّل ويُبين ما غَمِض في الكتاب الأصلي
+        </div>
+      </div>
+
+      <div class="book-features">
+        <h4>✨ المزايا:</h4>
+        <ul>
+          <li>يُعطي تصوراً تدريجياً لمسيرة الروح من البدايات إلى المراتب العليا</li>
+          <li>يُناسب من يرغب في السير الروحي خطوة بخطوة</li>
+          <li>منهج منظم ومرتب في التزكية</li>
+          <li>شرح ابن القيم له يجعله أكثر وضوحاً</li>
+        </ul>
+      </div>
+
+      <div class="quote-box">
+        <p>
+          "اليقظة: هي انزعاج القلب لروعة الانتباه من رقدة الغافلين"
+        </p>
+      </div>
+
+      <div class="quote-box">
+        <p>
+          "التوبة: الرجوع من مكروه إلى محبوب، والتوبة الحقيقية هي التي تتبعها الاستقامة"
+        </p>
+      </div>
+
+      <div class="quote-box">
+        <p>
+          "المحاسبة: أن تقايس نفسك بما عليها وبما لها، فإن استوت فأنت مفلس، وإن رجحت عليها فأنت مغبون"
+        </p>
+      </div>
+    </article>
+
+    <!-- Book 5 -->
+    <article class="book-card">
+      <h3 class="book-title">
+        <span class="book-number">5</span>
+        <span class="book-icon">📔</span>
+        تزكية النفوس وتربيتها كما يقررها علماء السلف
+      </h3>
+      
+      <div class="book-info">
+        <div class="book-info-item">
+          <strong>المؤلف:</strong> أحمد فريد (يجمع أقوال ابن رجب، ابن القيم، الغزالي، وغيرهم)
+        </div>
+        <div class="book-info-item">
+          <strong>الموضوع:</strong> محاولة جمع وتصنيف ما قاله علماء السلف في موضوع التزكية، عرض للأصول والوسائل، مع أمثلة من أقوال العلماء
+        </div>
+        <div class="book-info-item">
+          <strong>الحجم:</strong> حوالي 160 صفحة
+        </div>
+      </div>
+
+      <div class="book-features">
+        <h4>✨ المزايا:</h4>
+        <ul>
+          <li>يُوفّر نظرة شاملة من عدة علماء في كتاب واحد</li>
+          <li>مناسب للتأمل ومقارنة الآراء</li>
+          <li>أسلوب سهل ومبسط</li>
+          <li>يجمع الفوائد المتفرقة في كتاب واحد</li>
+        </ul>
+      </div>
+
+      <div class="quote-box">
+        <p>
+          "تزكية النفس واجبة على كل مسلم، وهي أصل كل خير، وإهمالها أصل كل شر"
+        </p>
+      </div>
+
+      <div class="quote-box">
+        <p>
+          "النفس إن لم تشغلها بالحق شغلتك بالباطل، وإن لم تُزكها بالطاعة دسّتها بالمعصية"
+        </p>
+      </div>
+    </article>
+
+    <!-- Book 6 -->
+    <article class="book-card">
+      <h3 class="book-title">
+        <span class="book-number">6</span>
+        <span class="book-icon">📓</span>
+        مدارج السالكين بين منازل إياك نعبد وإياك نستعين
+      </h3>
+      
+      <div class="book-info">
+        <div class="book-info-item">
+          <strong>المؤلف:</strong> ابن قيم الجوزية (شرح لكتاب منازل السائرين)
+        </div>
+        <div class="book-info-item">
+          <strong>الموضوع:</strong> شرح مفصل وعميق لكتاب "منازل السائرين" للهروي، يتناول مراحل السير إلى الله ومنازل العبودية والإحسان
+        </div>
+        <div class="book-info-item">
+          <strong>الأهمية:</strong> يُعد من أعظم كتب التزكية والسلوك في التراث الإسلامي، جمع فيه ابن القيم بين العلم والحكمة والتجربة الروحية
+        </div>
+      </div>
+
+      <div class="book-features">
+        <h4>✨ المزايا:</h4>
+        <ul>
+          <li>موسوعة شاملة في التزكية والسلوك الإيماني</li>
+          <li>أسلوب علمي رصين مع عمق روحي</li>
+          <li>يجمع بين النقل والعقل والذوق</li>
+          <li>مرجع لا غنى عنه لطالب التزكية</li>
+        </ul>
+      </div>
+
+      <div class="quote-box">
+        <p>
+          "السير إلى الله تعالى بالقلب والروح لا بالجسم، وإنما الجسم تبع للقلب، فإذا سار القلب سار الجسم"
+        </p>
+      </div>
+
+      <div class="quote-box">
+        <p>
+          "العبودية هي: غاية الحب مع غاية الذل، وهذا المعنى لا يصلح إلا لله وحده"
+        </p>
+      </div>
+
+      <div class="quote-box">
+        <p>
+          "من عرف نفسه اشتغل بإصلاحها عن عيوب الناس، ومن عرف ربه اشتغل به عن هوى نفسه"
+        </p>
+      </div>
+    </article>
+
+    <!-- Book 7 -->
+    <article class="book-card">
+      <h3 class="book-title">
+        <span class="book-number">7</span>
+        <span class="book-icon">📕</span>
+        كتب الزهد والرقائق
+      </h3>
+      
+      <div class="book-info">
+        <div class="book-info-item">
+          <strong>المؤلفون:</strong> عبد الله بن المبارك، الإمام أحمد بن حنبل، الإمام البيهقي
+        </div>
+        <div class="book-info-item">
+          <strong>الموضوع:</strong> الزهد في الدنيا، وتقوية القلب، وذكر الرقائق - وهي الأحاديث والكلمات التي تُرقّق القلب (أي تجعل القلب ليناً ورقيقاً)
+        </div>
+        <div class="book-info-item">
+          <strong>المحتوى:</strong> أحاديث نبوية وآثار عن الصحابة والتابعين في الزهد، الورع، التقوى، الخوف من الله، وأحوال الصالحين
+        </div>
+      </div>
+
+      <div class="book-features">
+        <h4>✨ المزايا:</h4>
+        <ul>
+          <li>من ذخائر الأدب الروحي الإسلامي</li>
+          <li>كثيراً ما تُستشهد بها في مجالس الذكر والوعظ</li>
+          <li>تُحيي القلب وترقّقه وتزيل قساوته</li>
+          <li>مناسبة للقراءة اليومية والتدبر</li>
+        </ul>
+      </div>
+
+      <div class="quote-box">
+        <p>
+          "الدنيا سجن المؤمن وجنة الكافر، والمؤمن فيها كالغريب أو عابر السبيل"
+        </p>
+      </div>
+
+      <div class="quote-box">
+        <p>
+          "من أحب الدنيا وسعى لها نسي الآخرة، ومن أحب الآخرة ترك لذات الدنيا"
+        </p>
+      </div>
+
+      <div class="quote-box">
+        <p>
+          "إن الله إذا أحب عبداً ابتلاه، فإن صبر اجتباه، وإن رضي اصطفاه"
+        </p>
+      </div>
+    </article>
+
+    <!-- Additional Resources Section -->
+    <section class="intro-section">
+      <h2>📖 كتب إضافية مهمة</h2>
+      <p style="margin-bottom: 20px;">
+        هناك كتب أخرى عظيمة في التزكية يُنصح بقراءتها:
+      </p>
+      
+      <div style="text-align: right; max-width: 900px; margin: 0 auto;">
+        <div class="book-info" style="margin-bottom: 15px;">
+          <div class="book-info-item">
+            <strong>📕 إحياء علوم الدين</strong> - أبو حامد الغزالي (مع التنبه لما فيه من ملاحظات)
+          </div>
+        </div>
+        
+        <div class="book-info" style="margin-bottom: 15px;">
+          <div class="book-info-item">
+            <strong>📗 جامع العلوم والحكم</strong> - ابن رجب الحنبلي
+          </div>
+        </div>
+        
+        <div class="book-info" style="margin-bottom: 15px;">
+          <div class="book-info-item">
+            <strong>📘 لطائف المعارف</strong> - ابن رجب الحنبلي
+          </div>
+        </div>
+        
+        <div class="book-info" style="margin-bottom: 15px;">
+          <div class="book-info-item">
+            <strong>📙 الفوائد</strong> - ابن القيم
+          </div>
+        </div>
+        
+        <div class="book-info" style="margin-bottom: 15px;">
+          <div class="book-info-item">
+            <strong>📔 صيد الخاطر</strong> - ابن الجوزي
+          </div>
+        </div>
+        
+        <div class="book-info" style="margin-bottom: 15px;">
+          <div class="book-info-item">
+            <strong>📓 الوابل الصيب من الكلم الطيب</strong> - ابن القيم
+          </div>
+        </div>
+        
+        <div class="book-info" style="margin-bottom: 15px;">
+          <div class="book-info-item">
+            <strong>📕 التخويف من النار والتعريف بحال دار البوار</strong> - ابن رجب
+          </div>
+        </div>
+        
+        <div class="book-info" style="margin-bottom: 15px;">
+          <div class="book-info-item">
+            <strong>📗 الاستقامة</strong> - شيخ الإسلام ابن تيمية
+          </div>
+        </div>
+        
+        <div class="book-info" style="margin-bottom: 15px;">
+          <div class="book-info-item">
+            <strong>📘 الفرقان بين أولياء الرحمن وأولياء الشيطان</strong> - ابن تيمية
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reading Tips Section -->
+    <section class="book-card">
+      <h3 class="book-title">
+        <span class="book-icon">💡</span>
+        نصائح للقراءة والاستفادة من كتب التزكية
+      </h3>
+      
+      <div class="book-features">
+        <h4>🎯 كيف تستفيد من هذه الكتب؟</h4>
+        <ul>
+          <li><strong>ابدأ بالمختصرات:</strong> ابدأ بالكتب الصغيرة مثل "تزكية النفس" لابن تيمية، ثم انتقل للكتب الأكبر</li>
+          <li><strong>القراءة بتمعن:</strong> اقرأ بتدبر وتأمل، لا تستعجل في إنهاء الكتاب</li>
+          <li><strong>التطبيق العملي:</strong> طبّق ما تقرأه في حياتك اليومية، فالعلم بلا عمل كشجر بلا ثمر</li>
+          <li><strong>التكرار:</strong> أعد قراءة الكتاب أكثر من مرة، ففي كل قراءة فوائد جديدة</li>
+          <li><strong>التدوين:</strong> دوّن الفوائد المهمة والاقتباسات التي تؤثر فيك</li>
+          <li><strong>المناقشة:</strong> ناقش ما تقرأه مع إخوانك الصالحين</li>
+          <li><strong>الدعاء:</strong> اسأل الله أن ينفعك بما تقرأ وأن يجعله حجة لك لا عليك</li>
+        </ul>
+      </div>
+
+      <div class="quote-box">
+        <p>
+          "ليس العلم بكثرة الرواية، ولكن العلم الخشية" - عبد الله بن مسعود رضي الله عنه
+        </p>
+      </div>
+
+      <div class="quote-box">
+        <p>
+          "كنا نستعين على حفظ الحديث بالعمل به" - الإمام وكيع بن الجراح رحمه الله
+        </p>
+      </div>
+    </section>
+
+    <!-- Where to Find Books -->
+    <section class="intro-section">
+      <h2>🔍 أين تجد هذه الكتب؟</h2>
+      <p style="margin-bottom: 20px;">
+        معظم هذه الكتب متوفرة في:
+      </p>
+      
+      <div style="text-align: right; max-width: 800px; margin: 0 auto;">
+        <div class="book-info" style="margin-bottom: 15px;">
+          <div class="book-info-item">
+            <strong>📱 المكتبات الإلكترونية:</strong> المكتبة الشاملة، مكتبة نور، موقع الوقفية، أرشيف الإنترنت
+          </div>
+        </div>
+        
+        <div class="book-info" style="margin-bottom: 15px;">
+          <div class="book-info-item">
+            <strong>📚 المكتبات الورقية:</strong> معظم المكتبات الإسلامية تحتوي على هذه الكتب
+          </div>
+        </div>
+        
+        <div class="book-info" style="margin-bottom: 15px;">
+          <div class="book-info-item">
+            <strong>🎧 الكتب الصوتية:</strong> متوفرة على اليوتيوب والمنصات الصوتية
+          </div>
+        </div>
+        
+        <div class="book-info" style="margin-bottom: 15px;">
+          <div class="book-info-item">
+            <strong>📖 تطبيقات الجوال:</strong> تطبيق المكتبة الشاملة، تطبيق مكتبة نور، وغيرها
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final Message -->
+    <section class="book-card">
+      <h2 style="color: #00796b; text-align: center; margin-bottom: 20px; font-size: 2rem;">
+        📚 رسالة ختامية
+      </h2>
+      <p style="text-align: center; font-size: 1.2rem; line-height: 2; color: #424242;">
+        هذه الكتب كنوز من العلم والحكمة، تركها لنا علماء أفذاذ قضوا حياتهم في طلب العلم والعمل به. 
+        فاجعل من قراءتها عبادة، ومن تطبيقها منهج حياة، ومن الدعوة إليها صدقة جارية.
+      </p>
+
+      <div class="quote-box" style="margin-top: 30px;">
+        <p>
+          "من سلك طريقاً يلتمس فيه علماً سهّل الله له به طريقاً إلى الجنة" - رسول الله ﷺ
+        </p>
+      </div>
+
+      <p style="text-align: center; margin-top: 30px; font-size: 1.3rem; color: #00796b; font-weight: 600;">
+        اللهم انفعنا بما علمتنا، وعلمنا ما ينفعنا، وزدنا علماً
+      </p>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p style="font-size: 1.1rem; margin-bottom: 10px;">© 2025 موقع التزكية – رحلة التطهير والنماء</p>
+    <p style="font-size: 0.9rem; opacity: 0.9;">اللهم طهر قلوبنا وزكِّ نفوسنا، أنت خير من زكاها، أنت وليها ومولاها</p>
+  </footer>
+
+</body>
+</html>
